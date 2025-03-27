@@ -1,0 +1,28 @@
+{
+  "name": "project-folder",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js"
+    
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  }
+}

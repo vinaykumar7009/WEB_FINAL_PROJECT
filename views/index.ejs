@@ -1,0 +1,1153 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    
+</head>
+<body>
+    <h1><span>End Sem practical Exam - crud operations using mongo db</span></h1>
+
+    <a href="/create">Add - Create button</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(function(item) { %>
+            <tr>
+                <td><%= item.name %></td>
+                <td><%= item.email %></td>
+                <td>
+                    <a href="/edit/<%= item._id %>">Edit</a> |
+                    <a href="/delete/<%= item._id %>">Delete</a>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Hospital - Dashboard</title>
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #007bff;
+        }
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+        }
+        .navbar-brand:hover {
+            color: #f8f9fa;
+        }
+        .container {
+            margin-top: 40px;
+        }
+        .table {
+            background-color: white;
+        }
+        .btn-add {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn-add:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+   
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">🏥 Max Hospital - Admin Panel</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="mt-4 mb-3 text-primary">Patient Records</h2>
+
+       
+        <a href="/create" class="btn btn-add">➕ Add New Patient</a>
+
+        
+        <table class="table table-bordered mt-3">
+            <thead class="table-primary">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(function(item) { %>
+                <tr>
+                    <td><%= item.name %></td>
+                    <td><%= item.email %></td>
+                    <td>
+                        <a href="/edit/<%= item._id %>" class="btn btn-warning btn-sm">✏️ Edit</a>
+                        <a href="/delete/<%= item._id %>" class="btn btn-danger btn-sm">🗑️ Delete</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+ 
+    <div class="footer">
+        <p>© 2025 Max Hospital. All Rights Reserved.</p>
+    </div>
+
+</body>
+</html> 
+
+ -->
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+<!-- 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Hospital - Dashboard</title>
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+
+    <style>
+        /* General Styling */
+        body {
+            background-color: #f4f7fc;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, #007bff, #004aad);
+            padding: 15px;
+        }
+        .navbar-brand {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .navbar-brand:hover {
+            color: #f8f9fa;
+        }
+
+        /* Container */
+        .container {
+            margin-top: 40px;
+            max-width: 900px;
+        }
+
+        /* Heading */
+        .dashboard-heading {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #004aad;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Add Patient Button */
+        .btn-add {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn-add:hover {
+            background: #0056b3;
+            color: white;
+        }
+
+        /* Table Styling */
+        .table {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        .table th {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+        }
+        .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        /* Action Buttons */
+        .btn-action {
+            font-size: 0.9rem;
+            padding: 6px 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .btn-action:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(135deg, #007bff, #004aad);
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">🏥 Max Hospital - Admin Panel</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="dashboard-heading">Patient Records</h2>
+
+       
+        <div class="text-center mb-3">
+            <a href="/create" class="btn btn-add">➕ Add New Patient</a>
+        </div>
+
+       
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach(function(item) { %>
+                    <tr>
+                        <td><%= item.name %></td>
+                        <td><%= item.email %></td>
+                        <td>
+                            <a href="/edit/<%= item._id %>" class="btn btn-warning btn-sm btn-action">✏️ Edit</a>
+                            <a href="/delete/<%= item._id %>" class="btn btn-danger btn-sm btn-action">🗑️ Delete</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    
+    <div class="footer">
+        <p>© 2025 Max Hospital. All Rights Reserved.</p>
+    </div>
+
+</body>
+</html> 
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Max Hospital - Dashboard</title>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+     <style>
+         body {
+             background-color: #f4f7fc;
+             font-family: 'Arial', sans-serif;
+         }
+         .navbar {
+             background: linear-gradient(135deg, #007bff, #004aad);
+             padding: 15px;
+         }
+         .navbar-brand {
+             color: white;
+             font-size: 1.5rem;
+             font-weight: bold;
+             transition: 0.3s;
+         }
+         .navbar-brand:hover {
+             color: #f8f9fa;
+         }
+         .container {
+             margin-top: 40px;
+             max-width: 900px;
+         }
+         .dashboard-heading {
+             font-size: 2rem;
+             font-weight: bold;
+             color: #004aad;
+             text-align: center;
+             margin-bottom: 20px;
+         }
+         .btn-add {
+             display: inline-block;
+             background: #007bff;
+             color: white;
+             font-size: 1rem;
+             font-weight: bold;
+             padding: 10px 20px;
+             border-radius: 8px;
+             text-decoration: none;
+             transition: 0.3s;
+         }
+         .btn-add:hover {
+             background: #0056b3;
+             color: white;
+         }
+         .table {
+             background-color: white;
+             border-radius: 8px;
+             overflow: hidden;
+             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+         }
+         .table th {
+             background-color: #007bff;
+             color: white;
+             text-align: center;
+         }
+         .table td {
+             text-align: center;
+             vertical-align: middle;
+         }
+         .btn-action {
+             font-size: 0.9rem;
+             padding: 6px 10px;
+             border-radius: 5px;
+             transition: 0.3s;
+         }
+         .btn-action:hover {
+             transform: scale(1.05);
+         }
+         .footer {
+             margin-top: 30px;
+             text-align: center;
+             padding: 15px;
+             background: linear-gradient(135deg, #007bff, #004aad);
+             color: white;
+             font-weight: bold;
+         }
+         .nav-link {
+             color: white !important;
+             margin-left: 20px;
+         }
+     </style>
+ </head>
+ <body>
+     <nav class="navbar navbar-expand-lg">
+         <div class="container">
+             <a class="navbar-brand" href="/">🏥 Max Hospital</a>
+             <div class="navbar-nav">
+                 <a class="nav-link" href="/">Home</a>
+                 <a class="nav-link" href="/dashboard">Dashboard</a>
+             </div>
+         </div>
+     </nav>
+ 
+     <div class="container">
+         <h2 class="dashboard-heading">Patient Records</h2>
+         <div class="text-center mb-3">
+             <a href="/create" class="btn btn-add">➕ Add New Patient</a>
+         </div>
+         <div class="table-responsive">
+             <table class="table table-bordered">
+                 <thead>
+                     <tr>
+                         <th>Name</th>
+                         <th>Email</th>
+                         <th>Actions</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <% data.forEach(function(item) { %>
+                     <tr>
+                         <td><%= item.name %></td>
+                         <td><%= item.email %></td>
+                         <td>
+                             <a href="/edit/<%= item._id %>" class="btn btn-warning btn-sm btn-action">✏️ Edit</a>
+                             <a href="/delete/<%= item._id %>" class="btn btn-danger btn-sm btn-action">🗑️ Delete</a>
+                         </td>
+                     </tr>
+                     <% }) %>
+                 </tbody>
+             </table>
+         </div>
+     </div>
+ 
+     <div class="footer">
+         <p>© 2025 Max Hospital. All Rights Reserved.</p>
+     </div>
+ </body>
+ </html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Hospital - Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f7fc;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #007bff, #004aad);
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .navbar-brand:hover {
+            color: #f8f9fa;
+            transform: scale(1.02);
+        }
+        .container {
+            margin-top: 40px;
+            max-width: 1200px;
+            flex: 1;
+        }
+        .dashboard-heading {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #004aad;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .btn-add {
+            background: #007bff;
+            color: white;
+            font-weight: bold;
+            padding: 12px 25px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-add:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .table {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .table th {
+            background-color: #007bff;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            vertical-align: middle;
+            padding: 15px;
+        }
+        .table td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 12px;
+            color: #444;
+        }
+        .btn-action {
+            font-size: 0.9rem;
+            padding: 8px 15px;
+            border-radius: 6px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin: 2px;
+        }
+        .btn-action:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .footer {
+            background: linear-gradient(135deg, #007bff, #004aad);
+            color: white;
+            padding: 20px;
+            margin-top: auto;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-link {
+            color: white !important;
+            margin-left: 25px;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">🏥 Max Hospital</a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="dashboard-heading">Appointment Records</h2>
+
+        <div class="text-center mb-4">
+            <a href="/create" class="btn btn-add">
+                <span>➕</span>
+                <span>New Appointment</span>
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Email</th>
+                        <th>Doctor</th>
+                        <th>Department</th>
+                        <th>Appointment Date</th>
+                        <th>Time</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach(function(item) { %>
+                    <tr>
+                        <td><%= item.name %></td>
+                        <td><%= item.email %></td>
+                        <td><%= item.drName %></td>
+                        <td><span class="status-badge" %>"><%= item.department %></span></td>
+                        <td><%= new Date(item.appointmentDate).toLocaleDateString() %></td>
+                        <td><%= item.appointmentTime %></td>
+                        <td>
+                            <a href="/edit/<%= item._id %>" class="btn btn-warning btn-sm btn-action">✏️ Edit</a>
+                            <a href="/delete/<%= item._id %>" class="btn btn-danger btn-sm btn-action">🗑️ Delete</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="text-center">
+            <p class="mb-0">© 2025 Max Hospital. All Rights Reserved.</p>
+        </div>
+    </div>
+
+</body>
+</html> 
+
+
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Hospital - Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f7fc;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header-section {
+            background: linear-gradient(135deg, #007bff, #004aad);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://img.freepik.com/free-photo/medical-banner-with-stethoscope_23-2149611199.jpg?w=1380&t=st=1710925394~exp=1710925994~hmac=6d5764d6b1d6eedf5c5c5c5c5c5c5c5c') center/cover;
+            opacity: 0.1;
+        }
+        .navbar {
+            background: transparent;
+            padding: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        .navbar-brand {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .navbar-brand:hover {
+            color: #f8f9fa;
+            transform: scale(1.05);
+        }
+        .header-content {
+            padding: 60px 0;
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+        }
+        .welcome-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+        .header-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            animation: fadeIn 1s ease-out;
+        }
+        .header-stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease;
+        }
+        .header-stat-item:hover {
+            transform: translateY(-5px);
+        }
+        .header-stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .header-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        .nav-button {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            backdrop-filter: blur(5px);
+        }
+        .nav-button:hover {
+            background: white;
+            color: #004aad;
+            transform: translateY(-2px);
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .dashboard-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 25px;
+            margin-bottom: 30px;
+            animation: slideUp 0.5s ease-out;
+        }
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+        .table {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .table th {
+            background: linear-gradient(135deg, #007bff, #004aad);
+            color: white;
+            font-weight: 500;
+        }
+        .table tr {
+            transition: background-color 0.3s ease;
+        }
+        .table tr:hover {
+            background-color: #f8f9fa;
+        }
+        .btn-action {
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .btn-action:hover {
+            transform: translateY(-2px);
+        }
+        .btn-add {
+            background: linear-gradient(135deg, #007bff, #004aad);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        .btn-add:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            color: white;
+        }
+        .feedback-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #007bff, #004aad);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: bounce 2s infinite;
+            text-decoration: none;
+        }
+        .feedback-button:hover {
+            transform: translateY(-5px);
+            color: white;
+            text-decoration: none;
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-section">
+        <nav class="navbar">
+            <div class="container">
+                <a class="navbar-brand" href="/dashboard">
+                    <i class="fas fa-hospital-alt fa-lg"></i>
+                    Max Hospital
+                </a>
+                <div class="nav-buttons">
+                    <a href="/" class="nav-button">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="/logout" class="nav-button">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="header-content">
+            <div class="container">
+                <h1 class="welcome-text">Welcome to Max Hospital Dashboard</h1>
+                <p class="header-subtitle">Managing Healthcare with Excellence</p>
+                
+                <div class="header-stats">
+                    <div class="header-stat-item">
+                        <div class="header-stat-number"><%= data.length %></div>
+                        <div class="header-stat-label">Total Appointments</div>
+                    </div>
+                    <div class="header-stat-item">
+                        <div class="header-stat-number">5</div>
+                        <div class="header-stat-label">Departments</div>
+                    </div>
+                    <div class="header-stat-item">
+                        <div class="header-stat-number"><%= new Date().toLocaleDateString() %></div>
+                        <div class="header-stat-label">Today's Date</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="stats-container">
+            <div class="stat-card">
+                <i class="fas fa-user-md stat-icon"></i>
+                <h3><%= data.length %></h3>
+                <p>Total Appointments</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-calendar-check stat-icon"></i>
+                <h3><%= new Date().toLocaleDateString() %></h3>
+                <p>Today's Date</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-hospital stat-icon"></i>
+                <h3>5</h3>
+                <p>Departments</p>
+            </div>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-primary mb-0">Patient Appointments</h2>
+                <a href="/create" class="btn btn-add">
+                    <i class="fas fa-plus"></i> New Appointment
+                </a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Email</th>
+                            <th>Doctor</th>
+                            <th>Department</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% data.forEach(function(item) { %>
+                        <tr>
+                            <td><%= item.name %></td>
+                            <td><%= item.email %></td>
+                            <td><%= item.drName %></td>
+                            <td><%= item.department %></td>
+                            <td><%= new Date(item.appointmentDate).toLocaleDateString() %></td>
+                            <td><%= item.appointmentTime %></td>
+                            <td>
+                                <a href="/edit/<%= item._id %>" class="btn btn-warning btn-action">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="/delete/<%= item._id %>" class="btn btn-danger btn-action">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <a href="/feedback" class="feedback-button">
+        <i class="fas fa-comments"></i>
+        Share Feedback
+    </a>
+</body>
+</html> 

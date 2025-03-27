@@ -1,0 +1,134 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Entry</title>
+   
+</head>
+<body>
+    <h1>Edit Entry</h1>
+    <form action="/edit/<%= data._id %>" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<%= data.name %>" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="<%= data.email %>" required>
+        <br>
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Appointment</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f7fc;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #004aad;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        .btn-update {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1rem;
+            background: #007bff;
+            border: none;
+            transition: 0.3s;
+        }
+        .btn-update:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Appointment</h1>
+        <form action="/edit/<%= data._id %>" method="POST">
+            
+            <div class="form-group">
+                <label for="name">Patient Name:</label>
+                <input type="text" id="name" name="name" class="form-control" value="<%= data.name %>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Patient Email:</label>
+                <input type="email" id="email" name="email" class="form-control" value="<%= data.email %>" required>
+            </div>
+
+         
+            <div class="form-group">
+                <label for="drName">Doctor's Name:</label>
+                <input type="text" id="drName" name="drName" class="form-control" value="<%= data.drName %>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="department">Department:</label>
+                <select id="department" name="department" class="form-control" required>
+                    <option value="<%= data.department %>" selected><%= data.department %></option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Neurology">Neurology</option>
+                    <option value="Orthopedics">Orthopedics</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                    <option value="Oncology">Oncology</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="appointmentDate">Appointment Date:</label>
+                <input type="date" id="appointmentDate" name="appointmentDate" class="form-control" 
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="appointmentTime">Appointment Time:</label>
+                <input type="time" id="appointmentTime" name="appointmentTime" class="form-control" 
+                    value="<%= data.appointmentTime %>" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-update">Update Appointment</button>
+        </form>
+    </div>
+</body>
+</html> 

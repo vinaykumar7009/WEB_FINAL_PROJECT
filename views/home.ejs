@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Max Hospital - Leading healthcare provider offering world-class medical services in cardiology, neurology, orthopedics, and pediatrics. Book appointments online and experience excellence in healthcare.">
+    <meta name="keywords" content="hospital, healthcare, medical services, doctors, cardiology, neurology, orthopedics, pediatrics, appointments">
+    <meta name="author" content="Max Hospital">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Max Hospital - Excellence in Healthcare">
+    <meta property="og:description" content="Leading healthcare provider offering world-class medical services. Book appointments online.">
+    <meta property="og:image" content="/images/hospital-building.jpg">
+    <meta property="og:url" content="https://maxhospital.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://maxhospital.com">
+    
+    <title>Max Hospital - Leading Healthcare Provider | Book Appointments Online</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    
+    <!-- Existing CSS links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Structured Data for Hospital -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Hospital",
+        "name": "Max Hospital",
+        "description": "Leading healthcare provider offering world-class medical services",
+        "url": "https://maxhospital.com",
+        "telephone": "+1-234-567-8900",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Hospital Street",
+            "addressLocality": "New York",
+            "addressRegion": "NY",
+            "postalCode": "10001",
+            "addressCountry": "US"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "40.7128",
+            "longitude": "-74.0060"
+        },
+        "medicalSpecialty": [
+            "Cardiology",
+            "Neurology",
+            "Orthopedics",
+            "Pediatrics"
+        ],
+        "availableService": [
+            {
+                "@type": "MedicalService",
+                "name": "Emergency Care",
+                "availableChannel": {
+                    "@type": "ServiceChannel",
+                    "availabilityType": "24/7"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary: #007bff;
+            --primary-dark: #0056b3;
+            --secondary: #6c757d;
+            --success: #28a745;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://img.freepik.com/free-photo/team-young-specialist-doctors-standing-corridor-hospital_1303-21199.jpg?w=2000') center/cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: transparent;
+            transition: all 0.3s ease;
+            padding: 20px 0;
+        }
+
+        .navbar.scrolled {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white) !important;
+        }
+
+        .nav-link {
+            color: var(--white) !important;
+            font-weight: 500;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Departments Section */
+        .departments {
+            padding: 80px 0;
+        }
+
+        .department-card {
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .department-img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .department-content {
+            padding: 20px;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 60px 0;
+            color: var(--white);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* Admin Login Button */
+        .admin-login {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .btn-admin {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-admin:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Emergency Contact */
+        .emergency-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--success);
+            color: var(--white);
+            padding: 15px 25px;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        .emergency-contact:hover {
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            .navbar-collapse {
+                background: rgba(0, 0, 0, 0.9);
+                padding: 20px;
+                border-radius: 10px;
+            }
+        }
+
+        /* Doctors Section */
+        .doctors {
+            background-color: #f8f9fa;
+        }
+        .doctor-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        .doctor-card:hover {
+            transform: translateY(-10px);
+        }
+        .doctor-img-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+        .doctor-img-wrapper img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .social-links {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .doctor-card:hover .social-links {
+            bottom: 0;
+        }
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+        .doctor-info {
+            padding: 20px;
+            text-align: center;
+        }
+        .specialty {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        .experience {
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        .quote-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .testimonial-content p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .author-info h5 {
+            margin: 0;
+            color: var(--primary-dark);
+        }
+        .author-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+        }
+        .contact-info {
+            padding: 30px;
+        }
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .form-control {
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+        }
+        .footer h4 {
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .footer-links a:hover {
+            opacity: 0.8;
+            padding-left: 5px;
+        }
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+        .newsletter-form .form-control {
+            border: none;
+            border-radius: 25px 0 0 25px;
+        }
+        .newsletter-form .btn {
+            border-radius: 0 25px 25px 0;
+            padding: 10px 20px;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Login Button -->
+    <a href="/login" class="btn-admin admin-login">
+        <i class="fas fa-user-md"></i>
+        Admin Login
+    </a>
+
+    <!-- Emergency Contact -->
+    <a href="tel:+1234567890" class="emergency-contact">
+        <i class="fas fa-phone-alt me-2"></i>
+        Emergency: +123 456 7890
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1 class="hero-title">Welcome to Max Hospital</h1>
+            <p class="hero-subtitle">Providing Excellence in Healthcare Since 1995</p>
+            <div class="mt-4">
+                <a href="#departments" class="btn btn-primary btn-lg me-3">Our Departments</a>
+                <a href="#contact" class="btn btn-outline-light btn-lg">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="text-center mb-5">Why Choose Max Hospital?</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-user-md feature-icon"></i>
+                        <h3>Expert Doctors</h3>
+                        <p>Our team of highly qualified and experienced medical professionals ensures the best care for our patients.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-heartbeat feature-icon"></i>
+                        <h3>24/7 Emergency</h3>
+                        <p>Round-the-clock emergency services with state-of-the-art facilities and quick response times.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-procedures feature-icon"></i>
+                        <h3>Modern Facilities</h3>
+                        <p>Latest medical equipment and comfortable patient rooms for the best healthcare experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="departments" id="departments">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Departments</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="department-card">
+                        <img src="https://img.freepik.com/free-photo/doctor-with-stethoscope-hands-hospital-background_1423-1.jpg?w=1380&t=st=1710926898~exp=1710927498~hmac=7f2a6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b" class="img-fluid department-img" alt="Cardiology">
+                        <div class="department-content">
+                            <h3>Cardiology</h3>
+                            <p>Comprehensive cardiac care with advanced diagnostic and treatment facilities.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="department-card">
+                        <img src="https://img.freepik.com/free-photo/young-male-psysician-with-patient-measuring-blood-pressure_1303-17879.jpg?w=1380&t=st=1710926931~exp=1710927531~hmac=d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4d4" class="img-fluid department-img" alt="Neurology">
+                        <div class="department-content">
+                            <h3>Neurology</h3>
+                            <p>Expert neurological care with modern diagnostic and therapeutic services.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="department-card">
+                        <img src="https://img.freepik.com/free-photo/doctor-examining-patient-clinic_23-2148970682.jpg?w=1380&t=st=1710926962~exp=1710927562~hmac=2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b" class="img-fluid department-img" alt="Orthopedics">
+                        <div class="department-content">
+                            <h3>Orthopedics</h3>
+                            <p>Specialized care for bone and joint conditions with advanced treatment options.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div>Expert Doctors</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">10K+</div>
+                        <div>Happy Patients</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div>Departments</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">25+</div>
+                        <div>Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section class="doctors py-5" id="doctors">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Expert Doctors</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="doctor-card">
+                        <div class="doctor-img-wrapper">
+                            <img src="https://img.freepik.com/free-photo/doctor-with-his-arms-crossed-white-background_1368-5790.jpg?w=740&t=st=1710927831~exp=1710928431~hmac=5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a" class="img-fluid" alt="Doctor">
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Dr. John Smith</h4>
+                            <p class="specialty">Cardiologist</p>
+                            <p class="experience">15+ Years Experience</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="doctor-card">
+                        <div class="doctor-img-wrapper">
+                            <img src="https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg?w=740&t=st=1710927863~exp=1710928463~hmac=3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a" class="img-fluid" alt="Doctor">
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Dr. Sarah Johnson</h4>
+                            <p class="specialty">Neurologist</p>
+                            <p class="experience">12+ Years Experience</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="doctor-card">
+                        <div class="doctor-img-wrapper">
+                            <img src="https://img.freepik.com/free-photo/doctor-with-his-arms-crossed-white-background_1368-5790.jpg?w=740&t=st=1710927831~exp=1710928431~hmac=5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a" class="img-fluid" alt="Doctor">
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Dr. Michael Brown</h4>
+                            <p class="specialty">Orthopedic Surgeon</p>
+                            <p class="experience">18+ Years Experience</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="doctor-card">
+                        <div class="doctor-img-wrapper">
+                            <img src="https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg?w=740&t=st=1710927863~exp=1710928463~hmac=3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a" class="img-fluid" alt="Doctor">
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Dr. Emily Davis</h4>
+                            <p class="specialty">Pediatrician</p>
+                            <p class="experience">10+ Years Experience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials py-5" id="testimonials">
+        <div class="container">
+            <h2 class="text-center mb-5">Patient Testimonials</h2>
+            <div class="row testimonial-slider">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <p>Exceptional care and attention from the entire staff. The facilities are modern and clean. I couldn't have asked for better treatment.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Patient" class="author-img">
+                            <div class="author-info">
+                                <h5>Robert Wilson</h5>
+                                <p>Cardiac Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <p>The doctors are highly skilled and caring. They took the time to explain everything thoroughly. Highly recommended!</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Patient" class="author-img">
+                            <div class="author-info">
+                                <h5>Jennifer Adams</h5>
+                                <p>Orthopedic Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <p>State-of-the-art facilities and professional staff. The entire experience was comfortable and reassuring.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Patient" class="author-img">
+                            <div class="author-info">
+                                <h5>David Thompson</h5>
+                                <p>Neurology Patient</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact py-5" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="contact-info">
+                        <h2 class="mb-4">Get in Touch</h2>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h5>Location</h5>
+                                <p>123 Hospital Street, Medical Center<br>New York, NY 10001</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h5>Phone</h5>
+                                <p>Emergency: +1 234 567 890<br>Reception: +1 234 567 891</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h5>Email</h5>
+                                <p>info@maxhospital.com<br>appointments@maxhospital.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-form">
+                        <h3 class="mb-4">Send us a Message</h3>
+                        <div id="messageAlert" class="alert" style="display: none;"></div>
+                        <form id="contactForm" onsubmit="submitMessage(event)">
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <select class="form-control" name="department" required>
+                                    <option value="">Select Department</option>
+                                    <option value="Cardiology">Cardiology</option>
+                                    <option value="Neurology">Neurology</option>
+                                    <option value="Orthopedics">Orthopedics</option>
+                                    <option value="Pediatrics">Pediatrics</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <textarea class="form-control" name="message" rows="4" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row py-5">
+                <div class="col-md-4">
+                    <h4>About Max Hospital</h4>
+                    <p>Providing excellence in healthcare since 1995. Our mission is to deliver the highest quality medical care with compassion and respect for human dignity.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Our Services</a></li>
+                        <li><a href="#departments">Departments</a></li>
+                        <li><a href="#doctors">Doctors</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="/login">Admin Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to our newsletter for updates and health tips.</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your Email">
+                            <button class="btn btn-primary">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom text-center py-3">
+                <p>&copy; 2024 Max Hospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add sitemap link -->
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+
+    <!-- Existing scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        async function submitMessage(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            const messageData = Object.fromEntries(formData.entries());
+            
+            try {
+                const response = await fetch('/api/messages/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(messageData)
+                });
+                
+                const result = await response.json();
+                const alertDiv = document.getElementById('messageAlert');
+                
+                if (result.success) {
+                    alertDiv.className = 'alert alert-success';
+                    alertDiv.textContent = result.message;
+                    form.reset();
+                } else {
+                    alertDiv.className = 'alert alert-danger';
+                    alertDiv.textContent = result.message;
+                }
+                
+                alertDiv.style.display = 'block';
+                
+                // Hide the alert after 5 seconds
+                setTimeout(() => {
+                    alertDiv.style.display = 'none';
+                }, 5000);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                const alertDiv = document.getElementById('messageAlert');
+                alertDiv.className = 'alert alert-danger';
+                alertDiv.textContent = 'An error occurred. Please try again later.';
+                alertDiv.style.display = 'block';
+            }
+        }
+    </script>
+
+    <!-- New lead generation form section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="text-center mb-4">Get a Free Consultation</h2>
+                    <form id="leadForm" action="/api/leads/submit" method="POST" class="p-4 bg-white rounded shadow">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">First Name*</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Last Name*</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Gender*</label>
+                            <div class="d-flex gap-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male" required>
+                                    <label class="form-check-label" for="genderMale">Male</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="female">
+                                    <label class="form-check-label" for="genderFemale">Female</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="genderOther" value="other">
+                                    <label class="form-check-label" for="genderOther">Other</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address*</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number*</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="street" class="form-label">Street Address*</label>
+                            <input type="text" class="form-control" id="street" name="address[street]" required>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="city" class="form-label">City*</label>
+                                <input type="text" class="form-control" id="city" name="address[city]" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="state" class="form-label">State*</label>
+                                <input type="text" class="form-control" id="state" name="address[state]" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="pincode" class="form-label">Pincode*</label>
+                                <input type="text" class="form-control" id="pincode" name="address[pincode]" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="service" class="form-label">Interested Service</label>
+                            <select class="form-select" id="service" name="service">
+                                <option value="">Select a Service</option>
+                                <option value="general">General Checkup</option>
+                                <option value="cardiology">Cardiology</option>
+                                <option value="orthopedics">Orthopedics</option>
+                                <option value="neurology">Neurology</option>
+                                <option value="pediatrics">Pediatrics</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Additional Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="4"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Request Free Consultation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add this before closing body tag -->
+    <script>
+    document.getElementById('leadForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = {};
+        
+        // Convert FormData to JSON object
+        for (let [key, value] of formData.entries()) {
+            if (key.includes('[') && key.includes(']')) {
+                // Handle nested objects (address)
+                const mainKey = key.split('[')[0];
+                const subKey = key.split('[')[1].split(']')[0];
+                if (!data[mainKey]) data[mainKey] = {};
+                data[mainKey][subKey] = value;
+            } else {
+                data[key] = value;
+            }
+        }
+        
+        try {
+            const response = await fetch('/api/leads/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            
+            if (response.ok) {
+                alert('Thank you! We will contact you soon.');
+                e.target.reset();
+            } else {
+                alert('Something went wrong. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Something went wrong. Please try again.');
+        }
+    });
+    </script>
+</body>
+</html>
