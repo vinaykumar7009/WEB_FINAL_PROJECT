@@ -23,9 +23,17 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Connected to MongoDB'))
-    .catch((err) => console.error('MongoDB connection error:', err));
+const MONGO_URI = process.env.MONGO_URI;
+if (!MONGO_URI) {
+    console.error('ERROR: MongoDB URI is not defined! Check your environment variables.');
+    // Fail gracefully instead of crashing
+    // You can choose to either exit the process or continue with limited functionality
+    console.log('Application will continue but database functionality will be limited.');
+} else {
+    mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+        .then(() => console.log('Connected to MongoDB'))
+        .catch((err) => console.error('MongoDB connection error:', err));
+}
 
 // Define Schema and Model
 const dataSchema = new mongoose.Schema({
@@ -68,6 +76,25 @@ const requireLogin = (req, res, next) => {
     }
 };
 
+// Middleware to handle database operations safely
+const handleDbOperation = async (operation, fallback, res) => {
+    try {
+        if (!mongoose.connection.readyState) {
+            console.log('Database not connected, using fallback');
+            return fallback;
+        }
+        return await operation();
+    } catch (error) {
+        console.error('Database operation error:', error);
+        if (res) {
+            return res.status(500).render('error', { 
+                message: 'Database error. Please try again later.' 
+            });
+        }
+        return fallback;
+    }
+};
+
 // Routes
 app.get('/', (req, res) => {
     res.render('home');
@@ -94,8 +121,14 @@ app.get('/logout', (req, res) => {
 
 // Protected Routes
 app.get('/dashboard', requireLogin, async (req, res) => {
-    const data = await Data.find();
-    res.render('index', { data });
+    const data = await handleDbOperation(
+        async () => await Data.find(),
+        [],
+        res
+    );
+    if (!res.headersSent) {
+        res.render('index', { data });
+    }
 });
 
 app.get('/leads', requireLogin, async (req, res) => {
