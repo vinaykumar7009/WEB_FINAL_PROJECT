@@ -33,23 +33,32 @@ if (!MONGO_URI) {
 const sessionConfig = {
     secret: 'your-secret-key',
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true, // Changed to true to ensure session is always created
     cookie: { 
-        secure: process.env.NODE_ENV === 'production', // Set to true in production with HTTPS
+        secure: false, // Set to false for HTTP, true only if using HTTPS
         maxAge: 1000 * 60 * 60 * 24 // 1 day
-    }
+    },
+    name: 'hospital.sid' // Custom name to avoid default name
 };
 
 // Add MongoDB as the session store if MongoDB is connected
 if (MONGO_URI) {
-    sessionConfig.store = MongoStore.create({
-        mongoUrl: MONGO_URI,
-        touchAfter: 24 * 3600, // Only update the session once per day unless data changes
-        crypto: {
-            secret: 'squirrel' // Encrypt session data
-        }
-    });
-    console.log('Using MongoDB for session storage');
+    try {
+        sessionConfig.store = MongoStore.create({
+            mongoUrl: MONGO_URI,
+            touchAfter: 24 * 3600,
+            crypto: {
+                secret: 'squirrel'
+            },
+            ttl: 24 * 60 * 60, // 1 day - session expiration in seconds
+            autoRemove: 'native', // Use MongoDB's TTL collection feature
+            autoRemoveInterval: 10 // Minutes between checking for expired sessions
+        });
+        console.log('Using MongoDB for session storage');
+    } catch (error) {
+        console.error('Failed to create MongoDB session store:', error);
+        console.warn('Falling back to MemoryStore (not recommended for production)');
+    }
 } else {
     console.warn('Warning: Using MemoryStore for sessions (not recommended for production)');
 }
@@ -95,9 +104,14 @@ const validCredentials = {
 
 // Middleware to check authentication
 const requireLogin = (req, res, next) => {
-    if (req.session.loggedIn) {
+    console.log('Session check:', req.session);
+    console.log('LoggedIn status:', req.session.loggedIn);
+    
+    if (req.session && req.session.loggedIn) {
+        console.log('User authenticated, proceeding to route');
         next();
     } else {
+        console.log('User not authenticated, redirecting to login');
         res.redirect('/login');
     }
 };
@@ -152,18 +166,47 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-    if (username === validCredentials.username && password === validCredentials.password) {
-        req.session.loggedIn = true;
-        res.redirect('/dashboard');
-    } else {
-        res.render('login', { error: 'Invalid credentials' });
+    try {
+        const { username, password } = req.body;
+        console.log(`Login attempt: ${username}`); // Log login attempts
+        
+        if (username === validCredentials.username && password === validCredentials.password) {
+            req.session.loggedIn = true;
+            req.session.user = username;
+            
+            // Save session explicitly to ensure it's stored
+            req.session.save(err => {
+                if (err) {
+                    console.error('Session save error:', err);
+                    return res.render('login', { error: 'Session error. Please try again.' });
+                }
+                console.log('Login successful, session saved');
+                res.redirect('/dashboard');
+            });
+        } else {
+            console.log('Invalid login credentials');
+            res.render('login', { error: 'Invalid credentials' });
+        }
+    } catch (error) {
+        console.error('Login error:', error);
+        res.render('login', { error: 'An error occurred. Please try again.' });
     }
 });
 
 app.get('/logout', (req, res) => {
-    req.session.destroy();
-    res.redirect('/');
+    if (req.session) {
+        req.session.destroy(err => {
+            if (err) {
+                console.error('Logout error:', err);
+                return res.redirect('/dashboard');
+            }
+            res.clearCookie('hospital.sid'); // Clear the session cookie
+            console.log('User logged out, session destroyed');
+            res.redirect('/');
+        });
+    } else {
+        res.redirect('/');
+    }
 });
 
 // Protected Routes
