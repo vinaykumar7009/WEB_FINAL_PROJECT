@@ -17,18 +17,45 @@ router.post('/submit', async (req, res) => {
     try {
         console.log('Lead submission data:', req.body);
         
-        // Simply pass all form fields to the Lead model
+        const { 
+            firstName, 
+            lastName, 
+            gender,
+            email, 
+            phone, 
+            address,
+            service, 
+            message 
+        } = req.body;
+        
+        // Create lead with proper field mapping
         const newLead = new Lead({
-            ...req.body,
-            status: 'new',
+            name: firstName + (lastName ? ' ' + lastName : ''), // Combine first and last name
+            email,
+            phone,
+            service,
+            message,
+            // Additional fields if they exist in your schema
             source: 'website form'
         });
 
         console.log('Saving lead:', newLead);
 
-        // Save lead to database
-        await newLead.save();
-        console.log('Lead saved successfully!');
+        // Save lead to database using the handleDbOperation pattern
+        if (mongoose.connection.readyState !== 1) {
+            console.error('Database not connected, cannot save lead');
+            return res.status(503).json({
+                success: false,
+                message: 'Database connection unavailable. Please try again later.'
+            });
+        }
+
+        // Save with timeout protection
+        const timeoutPromise = new Promise((_, reject) => {
+            setTimeout(() => reject(new Error('Database operation timed out')), 5000);
+        });
+
+        await Promise.race([newLead.save(), timeoutPromise]);
 
         res.status(201).json({ 
             success: true, 

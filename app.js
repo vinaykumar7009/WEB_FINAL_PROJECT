@@ -12,21 +12,37 @@ const leadRoutes = require('./routes/leadRoutes');
 
 // MongoDB Connection
 const MONGO_URI = process.env.MONGO_URI;
+// Set MongoDB connection options
+const mongooseOptions = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    bufferCommands: false, // Disable buffering to prevent timeout errors
+    serverSelectionTimeoutMS: 10000, // Increase timeout for server selection during deployment
+    socketTimeoutMS: 45000, // How long sockets stay open for
+    family: 4 // Use IPv4, skip trying IPv6
+};
+
 if (!MONGO_URI) {
     console.error('ERROR: MongoDB URI is not defined! Check your environment variables.');
     // Fail gracefully instead of crashing
     // You can choose to either exit the process or continue with limited functionality
     console.log('Application will continue but database functionality will be limited.');
 } else {
-    mongoose.connect(MONGO_URI, { 
-        useNewUrlParser: true, 
-        useUnifiedTopology: true,
-        bufferCommands: false, // Disable buffering to prevent timeout errors
-        serverSelectionTimeoutMS: 5000, // Decrease the timeout for server selection
-        socketTimeoutMS: 45000 // How long sockets stay open for
-    })
-        .then(() => console.log('Connected to MongoDB'))
-        .catch((err) => console.error('MongoDB connection error:', err));
+    // Connection with retry logic
+    const connectWithRetry = () => {
+        console.log('MongoDB connection with retry');
+        mongoose.connect(MONGO_URI, mongooseOptions)
+            .then(() => {
+                console.log('MongoDB is connected');
+            })
+            .catch(err => {
+                console.error('MongoDB connection error:', err);
+                console.log('Retrying MongoDB connection in 5 seconds');
+                setTimeout(connectWithRetry, 5000);
+            });
+    };
+    
+    connectWithRetry();
 }
 
 // Session Configuration
